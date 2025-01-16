@@ -5,7 +5,7 @@ import Quiz from './components/Quiz';
 import Results from './components/Results';
 
 const App = () => {
-  const [stage, setStage] = useState('home'); // 'home', 'categories', 'quiz', 'results'
+  const [stage, setStage] = useState('home'); 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
