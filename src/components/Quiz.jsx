@@ -4,13 +4,13 @@ const Quiz = ({ questions, onFinishQuiz }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [answered, setAnswered] = useState(false); // Track whether the question is answered
+  const [answered, setAnswered] = useState(false); 
 
   const currentQuestion = questions[currentQuestionIndex];
   const answers = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer].sort();
 
   const handleAnswerClick = (answer) => {
-    if (answered) return; // Prevent further clicks after an answer is selected
+    if (answered) return; 
 
     setSelectedAnswer(answer);
     setAnswered(true);
@@ -23,7 +23,7 @@ const Quiz = ({ questions, onFinishQuiz }) => {
       if (currentQuestionIndex + 1 < questions.length) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(null);
-        setAnswered(false); // Reset after moving to next question
+        setAnswered(false); 
       } else {
         onFinishQuiz(score + (answer === currentQuestion.correct_answer ? 1 : 0));
       }
@@ -45,10 +45,10 @@ const Quiz = ({ questions, onFinishQuiz }) => {
                 className={`w-full py-3 rounded-lg text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105
                   ${isSelected
                     ? isCorrect
-                      ? 'bg-green-500 text-white' // Correct answer green
-                      : 'bg-red-500 text-white' // Incorrect answer red
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-red-500 text-white'
                     : isCorrect && answered
-                    ? 'bg-green-500 text-white' // Correct answer green even if not selected
+                    ? 'bg-green-500 text-white' 
                     : 'bg-yellow-400 text-black hover:bg-yellow-500'}
                   ${answered ? 'cursor-default' : 'cursor-pointer'}`}
                 onClick={() => handleAnswerClick(answer)}
